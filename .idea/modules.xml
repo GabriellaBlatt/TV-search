@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/TV-search.iml" filepath="$PROJECT_DIR$/.idea/TV-search.iml" />
       <module fileurl="file://$PROJECT_DIR$/../templates/library/.idea/library.iml" filepath="$PROJECT_DIR$/../templates/library/.idea/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/tv-search.iml" filepath="$PROJECT_DIR$/.idea/tv-search.iml" />
     </modules>
   </component>
 </project>

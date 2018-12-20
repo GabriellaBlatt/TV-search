@@ -21,10 +21,12 @@ def img(filepath):
     return static_file(filepath, root="./images")
 
 
+
 @route('/')
 def index():
     sectionTemplate = "./templates/home.tpl"
     return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate, sectionData={})
+
 
 
 @error(404)
@@ -40,6 +42,33 @@ def index():
     return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate,
                     sectionData=all_of_shows)
 
+@route('/ajax/show/<id>')
+def show_page(id):
+    sectionTemplate = './templates/browse.tpl'
+    all_of_shows = [json.loads(utils.getJsonFromFile(utils.AVAILABE_SHOWS[i])) for i in range(12)]
+    wanted_show = ""
+    id = int(id)
+    for show in all_of_shows:
+        if show["id"] == id:
+            wanted_show = show
+            return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate,
+                            sectionData=[wanted_show])
+    return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate,
+                    sectionData=[wanted_show])
+
+@route('/show/<id>')
+def show_page(id):
+    sectionTemplate = './templates/browse.tpl'
+    all_of_shows = [json.loads(utils.getJsonFromFile(utils.AVAILABE_SHOWS[i])) for i in range(12)]
+    wanted_show = ""
+    id = int(id)
+    for show in all_of_shows:
+        if show["id"] == id:
+            wanted_show = show
+            return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate,
+                            sectionData=[wanted_show])
+    return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate,
+                    sectionData=[wanted_show])
 
 @route('/search', method='GET')
 def index():
