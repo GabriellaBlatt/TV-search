@@ -30,10 +30,9 @@ def index():
 @route('/browse')
 def index():
     sectionTemplate = "./templates/browse.tpl"
-    all_of_shows = [utils.getJsonFromFile(utils.AVAILABE_SHOWS[i]) for i in range(12)]
-    print(all_of_shows)
+    all_of_shows = [json.loads(utils.getJsonFromFile(utils.AVAILABE_SHOWS[i])) for i in range(12)]
     return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate,
-                    sectionData={all_of_shows})
+                    sectionData=all_of_shows)
 
 
 run(host='localhost', port=os.environ.get('PORT', 7000))
