@@ -1,5 +1,5 @@
 import os
-from bottle import (get, post, redirect, request, route, run, static_file, template)
+from bottle import (get, post, redirect, request, route, run, static_file, template, error)
 import utils
 import json
 
@@ -24,6 +24,12 @@ def img(filepath):
 @route('/')
 def index():
     sectionTemplate = "./templates/home.tpl"
+    return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate, sectionData={})
+
+
+@error(404)
+def error404(error):
+    sectionTemplate = "./templates/404.tpl"
     return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate, sectionData={})
 
 
