@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/.idea/TV-search.iml" filepath="$PROJECT_DIR$/.idea/TV-search.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/tv-search.iml" filepath="$PROJECT_DIR$/.idea/tv-search.iml" />
+>>>>>>> 95dbc019e585d77241872ebc9d4f2d0dd90c4854
     </modules>
   </component>
 </project>
