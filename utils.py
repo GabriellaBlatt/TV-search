@@ -16,3 +16,17 @@ def getJsonFromFile(showName):
         return "{}"
 
 
+def find_relevant_shows(word):
+    word = word.lower()
+    all_of_shows = [json.loads(getJsonFromFile(AVAILABE_SHOWS[i])) for i in range(12)]
+    relevant = []
+    for show in all_of_shows:
+        for episode in show["_embedded"]["episodes"]:
+            if episode["summary"] and word in episode["summary"].lower():
+                e = {
+                    "showid": show["id"],
+                    "episodeid": episode["id"],
+                    "text": "{show}: {episode}".format(show=show["name"], episode=episode["name"])
+                }
+                relevant.append(e)
+    return relevant

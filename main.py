@@ -96,4 +96,20 @@ def show_details(id, episode):
                sectionData=episode)
 
 
+@route('/search', method='GET')
+def index():
+    sectionTemplate = "./templates/search.tpl"
+    return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate,
+                    sectionData={})
+
+
+@route('/search', method='POST')
+def index():
+    show_key = request.forms.get('q')
+    relevant_shows = utils.find_relevant_shows(show_key)
+    sectionTemplate = "./templates/search_result.tpl"
+    return template("./pages/index.html", version=utils.getVersion(), sectionTemplate=sectionTemplate,
+                    sectionData=relevant_shows, query=show_key)
+
+
 run(host='localhost', port=os.environ.get('PORT', 7000))
